@@ -28,6 +28,10 @@ BuildRequires:	spandsp-devel
 YATE is a telephony engine designed to implement PBX and IVR solutions
 for small to large scale projects.
 
+%description -l pl
+YATE umo¿liwia implementacje rozwi±zañ telefonii opartych na PBX oraz
+IVR zarówno w du¿ych jak i ma³ych projektach.
+
 %package devel
 Summary:	Development package for yate
 Group:		Development/Libraries
@@ -35,7 +39,10 @@ Requires:	%{name} = %{version}-%{release}
 
 %description devel
 The yate-devel package includes the libraries and header files for
-YATE
+YATE.
+
+%description devel -l pl
+Zawiera pliki nagó³wkowe oraz niezbêdne biblioteki dla YATE.
 
 %prep
 %setup -q -n %{name}
