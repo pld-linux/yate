@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# yate:	Starts the Yet Another Telephony Engine
+#
+# chkconfig: 345 95 15
+# description: Starts and stops YATE used as Telephony Server
+#
+# processname: yate
+# pidfile: /var/run/yate.pid
+#
+
+# Extra Yate command line options
+YATE_OPTS="-vvvvv -l /var/log/yate"
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+
+# See how we were called.
+case "$1" in
+    start)
+    	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/yate ]; then
+	    msg_starting "yate"
+	    daemon yate -d -p /var/run/yate.pid $YATE_OPTS
+	    RETVAL=$?
+	    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/yate
+	else
+	    msg_already_running "yate"
+	fi
+	;;
+    stop)
+    	if [ -f /var/lock/subsys/yate ]; then
+	    msg_stopping "yate"
+	    killproc yate
+	    rm -f /var/lock/subsys/yate >/dev/null 2>&1
+	else
+	    msg_not_running "yate"
+	fi
+	;;
+    status)
+        status yate
+	RETVAL=$?
+        ;;
+    restart)
+	$0 stop
+	$0 start
+	;;
+    condrestart)
+	if [ -f /var/lock/subsys/yate ]; then
+	    $0 stop
+	    $0 start
+	fi
+	;;
+    reload)
+  	killproc yate -HUP
+	RETVAL=$?
+        ;;
+    *)
+	echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+	;;
+esac
+exit $RETVAL
+
