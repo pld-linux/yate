@@ -8,7 +8,7 @@ Version:	0.8.7
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://yate.null.ro/%{name}-%{version}.tar.gz
+Source0:	http://yate.null.ro/tarballs/%{name}-%{version}.tar.gz
 # Source0-md5:	96e2e915a3485fe5f4621c80586569d4
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
