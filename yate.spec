@@ -22,6 +22,7 @@ BuildRequires:	ortp-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	pwlib-devel
 BuildRequires:	qt-devel
+BuildRequires:	sed >= 4.0
 BuildRequires:	spandsp-devel
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkonfig
