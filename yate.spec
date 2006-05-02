@@ -1,6 +1,5 @@
 # TODO:
 # - subpackages for qt client (and maybe gtk)
-
 Summary:	Yet Another Telephony Engine
 Summary(pl):	Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
 Name:		yate
@@ -24,7 +23,7 @@ BuildRequires:	pwlib-devel
 BuildRequires:	qt-devel
 BuildRequires:	sed >= 4.0
 BuildRequires:	spandsp-devel
-PreReq:		rc-scripts
+Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkonfig
 Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,17 +84,11 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add %{name}
-if [ -f /var/lock/subsys/%{name} ]; then
-        /etc/rc.d/init.d/%{name} restart 1>&2
-else
-        echo "Type \"/etc/rc.d/init.d/%{name} start\" to start %{name} server" 1>&2
-fi
+%service %{name} restart
 
 %preun
 if [ "$1" = "0" ]; then
-        if [ -f /var/lock/subsys/%{name} ]; then
-                /etc/rc.d/init.d/%{name} stop >&2
-        fi
+	%service %{name} stop
         /sbin/chkconfig --del %{name}
 fi
 
