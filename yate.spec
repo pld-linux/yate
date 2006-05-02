@@ -21,11 +21,12 @@ BuildRequires:	ortp-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	pwlib-devel
 BuildRequires:	qt-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 BuildRequires:	spandsp-devel
-Requires:	rc-scripts
-Requires(post,preun):	/sbin/chkonfig
 Requires(post):	/sbin/ldconfig
+Requires(post,preun):	/sbin/chkonfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -89,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %preun
 if [ "$1" = "0" ]; then
 	%service %{name} stop
-        /sbin/chkconfig --del %{name}
+	/sbin/chkconfig --del %{name}
 fi
 
 %postun -p /sbin/ldconfig
