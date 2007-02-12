@@ -1,7 +1,7 @@
 # TODO:
 # - subpackages for qt client (and maybe gtk)
 Summary:	Yet Another Telephony Engine
-Summary(pl):	Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
+Summary(pl.UTF-8):   Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
 Name:		yate
 Version:	0.8.7
 Release:	1
@@ -33,21 +33,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 YATE is a telephony engine designed to implement PBX and IVR solutions
 for small to large scale projects.
 
-%description -l pl
-YATE to silnik do telefonii zaprojektowany do implementacji rozwi±zaÒ
-opartych na PBX oraz IVR zarÛwno w duøych jak i ma≥ych projektach.
+%description -l pl.UTF-8
+YATE to silnik do telefonii zaprojektowany do implementacji rozwiƒÖza≈Ñ
+opartych na PBX oraz IVR zar√≥wno w du≈ºych jak i ma≈Çych projektach.
 
 %package devel
 Summary:	Header files for YATE libraries
-Summary(pl):	Pliki nag≥Ûwkowe bibliotek YATE
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe bibliotek YATE
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package includes the header files for YATE libraries.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag≥Ûwkowe bibliotek YATE.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nag≈Ç√≥wkowe bibliotek YATE.
 
 %prep
 %setup -q -n %{name}
