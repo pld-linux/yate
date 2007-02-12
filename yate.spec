@@ -1,7 +1,7 @@
 # TODO:
 # - subpackages for qt client (and maybe gtk)
 Summary:	Yet Another Telephony Engine
-Summary(pl.UTF-8):   Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
+Summary(pl.UTF-8):	Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
 Name:		yate
 Version:	0.8.7
 Release:	1
@@ -39,7 +39,7 @@ opartych na PBX oraz IVR zarówno w dużych jak i małych projektach.
 
 %package devel
 Summary:	Header files for YATE libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek YATE
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek YATE
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
