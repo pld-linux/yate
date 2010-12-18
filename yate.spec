@@ -3,12 +3,12 @@
 Summary:	Yet Another Telephony Engine
 Summary(pl.UTF-8):	Yet Another Telephony Engine - jeszcze jeden silnik do telefonii
 Name:		yate
-Version:	0.8.7
-Release:	1
+Version:	3.0.0
+Release:	0.3.1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://yate.null.ro/tarballs/%{name}-%{version}.tar.gz
-# Source0-md5:	96e2e915a3485fe5f4621c80586569d4
+Source0:	http://voip.null.ro/tarballs/yate3/%{name}-%{version}-alpha3.tar.gz
+# Source0-md5:	3e900669f5aad67c2dbc0ca2cd5cc7b0
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 URL:		http://yate.null.ro/
@@ -17,10 +17,10 @@ BuildRequires:	libgsm-devel
 BuildRequires:	libpri-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	openh323-devel
-BuildRequires:	ortp-devel
+#BuildRequires:	ortp-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	pwlib-devel
-BuildRequires:	qt-devel
+#BuildRequires:	qt-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 BuildRequires:	spandsp-devel
@@ -54,18 +54,14 @@ Ten pakiet zawiera pliki nagłówkowe bibliotek YATE.
 sed -i -e 's#/usr/include/qt3#%{_includedir}/qt#g' configure*
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
 %configure \
-	--enable-shared \
-	--enable-static \
 	--with-libpq \
-	--with-libpri \
 	--with-libgsm \
 	--with-pwlib \
-	--with-openh323 \
-	--with-libortp \
-	--with-libglib2 \
-	--without-libgtk \
-	--with-libqt=%{_prefix}
+	--with-openh323
 %{__make}
 
 %install
